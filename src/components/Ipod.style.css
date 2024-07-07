@@ -1,0 +1,310 @@
+.container {
+  width: 30%;
+  height: 80%;
+  background-color: #2f2f2f;
+  border-radius: 20px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.display_screen {
+  height: 65%;
+  width: 100%;
+  border-radius: 20px;
+  background-image: url("../../public/assets/images/home.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 35%;
+  background-color: #2f2f2f;
+}
+
+.button_set {
+  width: 44%;
+  height: 90%;
+  background-color: aliceblue;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ok_button {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background-color: #2f2f2f;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.3s;
+  z-index: 20;
+}
+
+.ok_button.clicked {
+  border: 2px solid blue;
+  animation: ring 1s infinite;
+}
+
+@keyframes ring {
+  0% {
+    box-shadow: 0 0 0 0 blue;
+  }
+  40% {
+    box-shadow: 0 0 0 10px rgba(0, 0, 255, 0);
+  }
+  80% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 255, 0);
+  }
+}
+
+.menu_button {
+  z-index: 10;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  position: absolute;
+  top: 22px;
+  background-color: aliceblue;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.menu_button:hover {
+  color: #007bff; /* Change text color on hover */
+}
+
+.previous_button,
+.next_button,
+.forward_button {
+  background-color: aliceblue;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.previous_button {
+  z-index: 10;
+  width: 30px;
+  position: absolute;
+  left: 18px;
+}
+
+.next_button {
+  z-index: 10;
+  width: 30px;
+  position: absolute;
+  right: 18px;
+}
+
+.forward_button {
+  z-index: 10;
+  height: 24px;
+  position: absolute;
+  bottom: 22px;
+}
+
+/* Responsive Design */
+
+@media (max-width: 1400px) {
+  .container {
+    width: 30%;
+    height: 76%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .container {
+    width: 46%;
+    height: 70%;
+  }
+
+  .menu_button {
+    font-size: 16px;
+    top: 18px;
+  }
+
+  .ok_button {
+    width: 60px;
+    height: 60px;
+  }
+
+  .previous_button,
+  .next_button,
+  .forward_button {
+    width: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 70%;
+    height: 70%;
+  }
+
+  .menu_button {
+    font-size: 14px;
+    top: 14px;
+  }
+
+  .ok_button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .previous_button,
+  .next_button,
+  .forward_button {
+    width: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    width: 90%;
+    height: 80%;
+  }
+
+  .menu_button {
+    font-size: 12px;
+    top: 10px;
+  }
+
+  .ok_button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .previous_button,
+  .next_button,
+  .forward_button {
+    width: 18px;
+  }
+}
+
+.menu_items {
+  position: absolute;
+  top: 0;
+  left: -60%; /* Initially hidden off the screen to the left */
+  height: 100%;
+  width: 60%; /* Adjust width as per your design */
+  background-color: azure;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  transition: left 0.5s ease; /* Smooth transition for sliding effect */
+}
+
+/* When the menu is visible */
+.menu_items.visible {
+  left: 0;
+}
+
+.items {
+  width: 100%;
+  height: 100%;
+  padding: 18px;
+  background-color: azure;
+  display: flex;
+  align-items: self-start;
+  justify-content: space-around;
+  flex-direction: column;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.items h1 {
+  background-color: azure;
+  padding-left: 10px;
+}
+
+.items p {
+  background-color: azure;
+  font-size: 20px;
+  width: 100%;
+  padding: 6px 10px;
+  position: relative; /* Ensure the ::after element is positioned relative to the p */
+}
+
+.items p.hovered_item {
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  transition: all 0.1s ease;
+}
+
+/* Add the right-pointing SVG icon on hover */
+.items p.hovered_item::after {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-image: url("../../public/assets/images/rightChevron.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.cover_flow {
+  position: absolute;
+  top: 0;
+  right: -100%;
+  height: 100%;
+  width: 100%; /* Adjust width as per your design */
+  background-color: azure;
+  border-radius: 20px;
+  transition: right 1s ease; /* Smooth transition for sliding effect */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cover_flow.visible {
+  right: 0;
+}
+
+.congratulations-message {
+  font-size: 24px; /* Adjust font size as needed */
+  color: #007bff; /* Blue text color */
+  font-family: Arial, sans-serif; /* Change font as needed */
+  background-color: azure;
+  position: relative;
+}
+
+.congratulations-message p {
+  background-color: azure;
+  padding-top: 4px;
+}
+
+.bg-color {
+  background-color: azure;
+}
+
+.games-content {
+  width: 100%;
+  height: 100%;
+  background-image: url("../../public/assets/images/games.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
